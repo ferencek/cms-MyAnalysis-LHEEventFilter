@@ -48,8 +48,10 @@ for f in os.listdir(inputDir):
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
+        # B2G EDM-ntuple
+        'file:B2GEDMNtuple.root'
         # MiniAOD
-        '/store/user/ferencek/noreplica/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISpring15DR74_MiniAOD/150613_192348/0000/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8_MiniAOD_Asympt25ns_1.root'
+        #'/store/user/ferencek/noreplica/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISpring15DR74_MiniAOD/150613_192348/0000/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8_MiniAOD_Asympt25ns_1.root'
         # AOD
         #'/store/user/ferencek/noreplica/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISpring15DR74_AODSIM/150612_162933/0000/Stop2ToStop1H_TuneCUETP8M1_13TeV-madgraph-pythia8_AODSIM_Asympt25ns_1.root'
     ),
@@ -65,7 +67,7 @@ if options.useInputDir:
 process.filter = cms.EDFilter('LHEEventFilter',
     src   = cms.InputTag('source'),
     model = cms.string('stop2_1000.0_400_225'),
-    printLHEHeader = cms.bool(True),
+    printLHEHeader = cms.bool(False), # does not work with B2G EDM-ntuples
     printLHEWeights = cms.bool(True),
     maxEventsToPrint = cms.untracked.uint32(5)
 )
