@@ -64,7 +64,10 @@ if options.useInputDir:
 
 process.filter = cms.EDFilter('LHEEventFilter',
     src   = cms.InputTag('source'),
-    model = cms.string('stop2_1000.0_400_225')
+    model = cms.string('stop2_1000.0_400_225'),
+    printLHEHeader = cms.bool(True),
+    printLHEWeights = cms.bool(True),
+    maxEventsToPrint = cms.untracked.uint32(5)
 )
 
 process.p = cms.Path(
